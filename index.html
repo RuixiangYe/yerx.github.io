@@ -146,7 +146,7 @@
             color: white;
             border: none;
             border-radius: 5px;
-            margin-left: 15px; 
+            /* margin-left: 15px; /* 您可以根据按钮实际位置调整 */
         }
         #playPauseButton:hover {
             background-color: #218838;
@@ -168,19 +168,16 @@
 
         <div class="heading-with-aside">
             <h3>Here is my self introduction</h3>
-            <p class="music-prompt">Perhaps you'd like to enjoy some music while you read?</p>
-            </div>
+            <p class="music-prompt">Perhaps you'd like to enjoy some music while you read? 
+                <button id="playPauseButton">播放音乐</button>
+            </p>
+        </div>
         
         <audio id="backgroundMusic" loop>
-            <source src="/dylanf - 卡农 (经典钢琴版) .mp3" type="audio/mpeg">
+            <source src="https://raw.githubusercontent.com/RuixiangYe/yerx.github.io/refs/heads/main/dylanf%20-%20%E5%8D%A1%E5%86%9C%EF%BC%88%E7%BB%8F%E5%85%B8%E9%92%A2%E7%90%B4%E7%89%88%EF%BC%89.mp3" type="audio/mpeg">
             您的浏览器不支持 HTML5 音频播放。
         </audio>
         
-        <div>
-             <button id="playPauseButton">播放音乐</button>
-        </div>
-
-
         <p>I received my B.Sc. in Chemistry and Theoretical Physics from Zhejiang Normal University in 2025. I am currently preparing to begin my career as a high school chemistry teacher. My academic interests lie primarily in theoretical chemistry and theoretical physics, with a particular focus on areas where physics intersects with differential geometry and algebraic topology. Outside of teaching and research, I have a strong appreciation for classical music, coffee, and table tennis. While education is my main profession, I remain actively engaged in independent research in my spare time. ☺️☺️☺️</p>
 
         <div>
@@ -250,5 +247,7 @@
             });
         }
     </script>
+</body>
+</html>
 </body>
 </html>
