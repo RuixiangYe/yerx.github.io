@@ -11,38 +11,58 @@
             color: #333;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa; /* 可选：浅灰色背景 */
+            background-color: #f8f9fa; 
         }
 
         .container {
-            max-width: 900px; /* 内容最大宽度，您可以调整这个值 */
-            margin: 30px auto; /* 上下边距30px，左右自动（实现居中） */
-            padding: 20px 30px; /* 容器内部的左右内边距，确保内容不贴边 */
-            background-color: #ffffff; /* 内容区域背景色 */
-            box-shadow: 0 0 10px rgba(0,0,0,0.05); /* 可选：轻微的阴影效果 */
-            border-radius: 8px; /* 可选：圆角 */
+            max-width: 900px; 
+            margin: 30px auto; 
+            padding: 20px 30px; 
+            background-color: #ffffff; 
+            box-shadow: 0 0 10px rgba(0,0,0,0.05); 
+            border-radius: 8px; 
             box-sizing: border-box;
         }
 
         h1, h2, h3 {
             color: #2c3e50;
-            margin-top: 1.5em;
-            margin-bottom: 0.8em;
         }
 
         h1 {
             font-size: 2.5em;
             text-align: center;
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
         }
 
         h2 {
             font-size: 2em;
-            border-bottom: 1px solid #eee; /* 可选：为二级标题添加下划线 */
+            border-bottom: 1px solid #eee; 
             padding-bottom: 0.3em;
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+        }
+ 
+        .heading-with-aside {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: baseline; 
+            margin-top: 1.5em;  
+            margin-bottom: 0.8em;
         }
 
-        h3 {
-            font-size: 1.5em;
+        .heading-with-aside h3 {
+            font-size: 1.5em; 
+            color: #2c3e50;   
+            margin: 0;        
+        }
+
+        .music-prompt {
+            font-size: 0.85em; 
+            color: #555;       
+            margin-left: 20px;  
+            white-space: nowrap; 
+            font-style: italic; 
         }
 
         p {
@@ -51,19 +71,19 @@
         }
 
         img {
-            max-width: 100%; /* 使图片响应式 */
-            height: auto;   /* 保持宽高比 */
-            display: block; /* 方便使用 margin: auto 居中 */
+            max-width: 100%; 
+            height: auto;   
+            display: block; 
             margin-left: auto;
             margin-right: auto;
             margin-top: 15px;
             margin-bottom: 15px;
-            border-radius: 4px; /* 可选：为所有图片添加轻微圆角 */
+            border-radius: 4px; 
         }
 
         .profile-picture {
-            max-width: 200px; /* 您之前设置的是240px，可以调整 */
-            border-radius: 50%; /* 圆形头像 */
+            max-width: 200px; 
+            border-radius: 50%; 
         }
 
         a {
@@ -91,17 +111,17 @@
         .rapidfire-table {
             width: 100%;
             margin-top: 1em;
-            border-collapse: collapse; /* 移除表格单元格间隙 */
+            border-collapse: collapse; 
         }
 
         .rapidfire-table td {
             vertical-align: top;
             width: 50%;
-            padding: 8px 0; /* 单元格上下内边距 */
+            padding: 8px 0; 
         }
 
         .rapidfire-table ul {
-            list-style-type: none; /* 移除默认的项目符号 */
+            list-style-type: none; 
             padding-left: 0;
             margin-top: 0;
         }
@@ -117,15 +137,22 @@
             background: #ddd;
             margin: 40px 0;
         }
-
-        .footer {
-            text-align: center;
+        
+        #playPauseButton { /* 播放/暂停按钮样式 */
+            padding: 8px 12px;
             font-size: 0.9em;
-            color: #777;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
+            cursor: pointer;
+            background-color: #28a745; 
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-left: 15px; 
         }
+        #playPauseButton:hover {
+            background-color: #218838;
+        }
+        /* #backgroundMusic { display: none; } /* 如果您不希望显示默认播放器，可以取消这行注释 */
+
     </style>
 </head>
 <body>
@@ -135,10 +162,24 @@
         <h1>Hey 👋, I'm RuixiangYe!</h1>
         <h2><strong>Welcome to my personal website!🤗</strong></h2>
 
-        <div> <img src="https://raw.githubusercontent.com/RuixiangYe/yerx.github.io/main/%E4%B8%AA%E4%BA%BA%E5%9B%BE%E7%89%87.png" alt="Personal Picture" class="profile-picture">
+        <div> 
+            <img src="https://raw.githubusercontent.com/RuixiangYe/yerx.github.io/main/%E4%B8%AA%E4%BA%BA%E5%9B%BE%E7%89%87.png" alt="Personal Picture" class="profile-picture">
         </div>
 
-        <h3>Here is my self introduction</h3>
+        <div class="heading-with-aside">
+            <h3>Here is my self introduction</h3>
+            <p class="music-prompt">Perhaps you'd like to enjoy some music while you read?</p>
+            </div>
+        
+        <audio id="backgroundMusic" loop>
+            <source src="/dylanf - 卡农 (经典钢琴版) .mp3" type="audio/mpeg">
+            您的浏览器不支持 HTML5 音频播放。
+        </audio>
+        
+        <div>
+             <button id="playPauseButton">播放音乐</button>
+        </div>
+
 
         <p>I received my B.Sc. in Chemistry and Theoretical Physics from Zhejiang Normal University in 2025. I am currently preparing to begin my career as a high school chemistry teacher. My academic interests lie primarily in theoretical chemistry and theoretical physics, with a particular focus on areas where physics intersects with differential geometry and algebraic topology. Outside of teaching and research, I have a strong appreciation for classical music, coffee, and table tennis. While education is my main profession, I remain actively engaged in independent research in my spare time. ☺️☺️☺️</p>
 
@@ -146,21 +187,21 @@
             <img src="https://raw.githubusercontent.com/RuixiangYe/yerx.github.io/main/%E5%9B%BE%E7%89%87.jpg" alt="Another Picture" style="max-width: 150px;">
         </div>
 
-        <p>During my undergraduate studies, in addition to the core curriculum in chemistry, I completed the four fundamental mechanics courses from the undergraduate physics program and took graduate-level courses in Quantum Field Theory (too difficult to learn!), General Relativity, and Many-Body Physics. From the mathematics department, I studied Group Theory (the most beautiful!), Differential Geometry, and Algebraic Topology.  I successfully participated in the Yau Mathematical Competition organized by Shing-Tung Yau in the Mathematical Physics track (at the level of Ph.D. program entrance exams), and I also won the First Prize in the National College Mathematics Competition and the First Prize in the Zhejiang Province Advanced Mathematics CompetitionI am also skilled in programming, with practical experience in numerical computation using Python and Mathematica. 😉😉😉</p>
+        <p>During my undergraduate studies, in addition to the core curriculum in chemistry, I completed the four fundamental mechanics courses from the undergraduate physics program and took graduate-level courses in Quantum Field Theory (too difficult to learn!), General Relativity, and Many-Body Physics. From the mathematics department, I studied Group Theory (the most beautiful!), Differential Geometry, and Algebraic Topology. I am also skilled in programming, with practical experience in numerical computation using Python and Mathematica. 😉😉😉</p>
 
         <div>
-            <img src="https://github.com/RuixiangYe/yerx.github.io/blob/main/%E5%AE%87%E5%AE%99.jpeg?raw=true" alt="Universe" style="max-width: 400px;">
+            <img src="https://github.com/RuixiangYe/yerx.github.io/blob/main/%E5%AE%87%E5%AE%99.jpeg?raw=true" alt="Universe" style="max-width: 267px;">
         </div>
 
         <p>My previous research involved topics such as quantum geometry in strongly correlated systems—including the anisotropic quantum Hall effect—as well as topological phases and fractionalization. In theoretical chemistry, I worked on applications of density functional theory (DFT); a related publication can be found here: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0021979723008329" target="_blank" rel="noopener noreferrer">j.jcis.2023.05.041</a>.
         I have since shifted my focus away from these research areas. 😇😇😇</p>
 
         <div>
-            <img src="https://raw.githubusercontent.com/RuixiangYe/yerx.github.io/main/%E9%9C%8D%E5%B0%94.gif" alt="Hall Effect GIF" style="max-width: 400px;">
+            <img src="https://raw.githubusercontent.com/RuixiangYe/yerx.github.io/main/%E9%9C%8D%E5%B0%94.gif" alt="Hall Effect GIF" style="max-width: 267px;">
         </div>
 
         <p>In addition, I actively share science communication content and study notes on Zhihu, a leading knowledge-sharing platform in China, where my <a href="https://www.zhihu.com/people/he-xi-7-18-54" target="_blank" rel="noopener noreferrer">posts</a> have accumulated over 400,000 views. 🤪🤪🤪</p>
-
+        
         <h2>Contact</h2>
         <div class="contact-info">
             <p><strong>Email:</strong> yrx0822@foxmail.com</p>
@@ -183,9 +224,31 @@
                 <td>
                     </td>
             </tr>
-      </table>
+        </table>
 
         <hr>
 
-        </div> </body>
+    </div> <script>
+        // JavaScript for play/pause button
+        const musicPlayer = document.getElementById('backgroundMusic');
+        const playPauseButton = document.getElementById('playPauseButton'); 
+
+        if (playPauseButton && musicPlayer) {
+            playPauseButton.addEventListener('click', function() {
+                if (musicPlayer.paused || musicPlayer.ended) {
+                    musicPlayer.play();
+                    playPauseButton.textContent = '暂停音乐'; 
+                } else {
+                    musicPlayer.pause();
+                    playPauseButton.textContent = '播放音乐'; 
+                }
+            });
+            musicPlayer.addEventListener('ended', function() {
+                // Loop is enabled on audio tag, so this might only be relevant if loop is removed
+                // or for other UI updates.
+                playPauseButton.textContent = '播放音乐';
+            });
+        }
+    </script>
+</body>
 </html>
