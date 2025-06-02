@@ -11,16 +11,16 @@
             color: #333;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
+            background-color: #f8f9fa; 
         }
 
         .container {
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 20px 30px;
-            background-color: #ffffff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.05);
-            border-radius: 8px;
+            max-width: 900px; 
+            margin: 30px auto; 
+            padding: 20px 30px; 
+            background-color: #ffffff; 
+            box-shadow: 0 0 10px rgba(0,0,0,0.05); 
+            border-radius: 8px; 
             box-sizing: border-box;
         }
 
@@ -37,34 +37,32 @@
 
         h2 {
             font-size: 2em;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #eee; 
             padding-bottom: 0.3em;
             margin-top: 1.5em;
             margin-bottom: 0.8em;
         }
-
+ 
         .heading-with-aside {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-top: 1.5em;
+            display: flex; 
+            justify-content: space-between; 
+            align-items: baseline; 
+            margin-top: 1.5em;  
             margin-bottom: 0.8em;
         }
 
         .heading-with-aside h3 {
-            font-size: 1.5em;
-            color: #2c3e50;
-            margin: 0;
+            font-size: 1.5em; 
+            color: #2c3e50;   
+            margin: 0;        
         }
 
         .music-prompt {
-            font-size: 0.85em;
-            color: #555;
-            margin-left: 20px;
-            white-space: nowrap;
-            font-style: italic;
-            display: flex; /* Align button with text */
-            align-items: center;
+            font-size: 0.85em; 
+            color: #555;       
+            margin-left: 20px;  
+            white-space: nowrap; 
+            font-style: italic; 
         }
 
         p {
@@ -73,19 +71,19 @@
         }
 
         img {
-            max-width: 100%;
-            height: auto;
-            display: block;
+            max-width: 100%; 
+            height: auto;   
+            display: block; 
             margin-left: auto;
             margin-right: auto;
             margin-top: 15px;
             margin-bottom: 15px;
-            border-radius: 4px;
+            border-radius: 4px; 
         }
 
         .profile-picture {
-            max-width: 200px;
-            border-radius: 50%;
+            max-width: 200px; 
+            border-radius: 50%; 
         }
 
         a {
@@ -113,17 +111,17 @@
         .rapidfire-table {
             width: 100%;
             margin-top: 1em;
-            border-collapse: collapse;
+            border-collapse: collapse; 
         }
 
         .rapidfire-table td {
             vertical-align: top;
             width: 50%;
-            padding: 8px 0;
+            padding: 8px 0; 
         }
 
         .rapidfire-table ul {
-            list-style-type: none;
+            list-style-type: none; 
             padding-left: 0;
             margin-top: 0;
         }
@@ -139,22 +137,19 @@
             background: #ddd;
             margin: 40px 0;
         }
-
+        
         #playPauseButton { /* 播放/暂停按钮样式 */
-            padding: 6px 12px; /* 调整内边距让三角形居中更好看 */
-            font-size: 1em;    /* 调整字体大小以适应符号 */
+            padding: 8px 12px;
+            font-size: 0.9em;
             cursor: pointer;
-            background-color: #808080; /* 灰色背景 */
+            background-color: #28a745; 
             color: white;
             border: none;
             border-radius: 5px;
-            margin-left: 10px;
-            line-height: 1; /* 确保符号垂直居中 */
-            min-width: 40px; /* 给按钮一个最小宽度，避免切换符号时跳动 */
-            text-align: center;
+            /* margin-left: 15px; /* 您可以根据按钮实际位置调整 */
         }
         #playPauseButton:hover {
-            background-color: #666666; /* 深一点的灰色 */
+            background-color: #218838;
         }
         /* #backgroundMusic { display: none; } /* 如果您不希望显示默认播放器，可以取消这行注释 */
 
@@ -167,21 +162,22 @@
         <h1>Hey 👋, I'm RuixiangYe!</h1>
         <h2><strong>Welcome to my personal website!🤗</strong></h2>
 
-        <div>
+        <div> 
             <img src="https://raw.githubusercontent.com/RuixiangYe/yerx.github.io/main/%E4%B8%AA%E4%BA%BA%E5%9B%BE%E7%89%87.png" alt="Personal Picture" class="profile-picture">
         </div>
 
         <div class="heading-with-aside">
             <h3>Here is my self introduction</h3>
-            <p class="music-prompt">Perhaps you'd like to enjoy some music while you read?
-                <button id="playPauseButton" aria-label="Play/Pause Music">&#9658;</button> </p>
+            <p class="music-prompt">Perhaps you'd like to enjoy some music while you read? 
+                <button id="playPauseButton">播放音乐</button>
+            </p>
         </div>
-
+        
         <audio id="backgroundMusic" loop>
             <source src="https://raw.githubusercontent.com/RuixiangYe/yerx.github.io/refs/heads/main/dylanf%20-%20%E5%8D%A1%E5%86%9C%EF%BC%88%E7%BB%8F%E5%85%B8%E9%92%A2%E7%90%B4%E7%89%88%EF%BC%89.mp3" type="audio/mpeg">
             您的浏览器不支持 HTML5 音频播放。
         </audio>
-
+        
         <p>I received my B.Sc. in Chemistry and Theoretical Physics from Zhejiang Normal University in 2025. I am currently preparing to begin my career as a high school chemistry teacher. My academic interests lie primarily in theoretical chemistry and theoretical physics, with a particular focus on areas where physics intersects with differential geometry and algebraic topology. Outside of teaching and research, I have a strong appreciation for classical music, coffee, and table tennis. While education is my main profession, I remain actively engaged in independent research in my spare time. ☺️☺️☺️</p>
 
         <div>
@@ -191,18 +187,18 @@
         <p>During my undergraduate studies, in addition to the core curriculum in chemistry, I completed the four fundamental mechanics courses from the undergraduate physics program and took graduate-level courses in Quantum Field Theory (too difficult to learn!), General Relativity, and Many-Body Physics. From the mathematics department, I studied Group Theory (the most beautiful!), Differential Geometry, and Algebraic Topology. I am also skilled in programming, with practical experience in numerical computation using Python and Mathematica. 😉😉😉</p>
 
         <div>
-            <img src="https://github.com/RuixiangYe/yerx.github.io/blob/main/%E5%AE%87%E5%AE%99.jpeg?raw=true" alt="Universe" style="max-width: 200px;">
+            <img src="https://github.com/RuixiangYe/yerx.github.io/blob/main/%E5%AE%87%E5%AE%99.jpeg?raw=true" alt="Universe" style="max-width: 267px;">
         </div>
 
         <p>My previous research involved topics such as quantum geometry in strongly correlated systems—including the anisotropic quantum Hall effect—as well as topological phases and fractionalization. In theoretical chemistry, I worked on applications of density functional theory (DFT); a related publication can be found here: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0021979723008329" target="_blank" rel="noopener noreferrer">j.jcis.2023.05.041</a>.
         I have since shifted my focus away from these research areas. 😇😇😇</p>
 
         <div>
-            <img src="https://raw.githubusercontent.com/RuixiangYe/yerx.github.io/main/%E9%9C%8D%E5%B0%94.gif" alt="Hall Effect GIF" style="max-width: 200px;">
+            <img src="https://raw.githubusercontent.com/RuixiangYe/yerx.github.io/main/%E9%9C%8D%E5%B0%94.gif" alt="Hall Effect GIF" style="max-width: 267px;">
         </div>
 
         <p>In addition, I actively share science communication content and study notes on Zhihu, a leading knowledge-sharing platform in China, where my <a href="https://www.zhihu.com/people/he-xi-7-18-54" target="_blank" rel="noopener noreferrer">posts</a> have accumulated over 400,000 views. 🤪🤪🤪</p>
-
+        
         <h2>Contact</h2>
         <div class="contact-info">
             <p><strong>Email:</strong> yrx0822@foxmail.com</p>
@@ -232,22 +228,22 @@
     </div> <script>
         // JavaScript for play/pause button
         const musicPlayer = document.getElementById('backgroundMusic');
-        const playPauseButton = document.getElementById('playPauseButton');
+        const playPauseButton = document.getElementById('playPauseButton'); 
 
         if (playPauseButton && musicPlayer) {
             playPauseButton.addEventListener('click', function() {
                 if (musicPlayer.paused || musicPlayer.ended) {
                     musicPlayer.play();
-                    playPauseButton.innerHTML = '❚❚'; // 暂停符号
+                    playPauseButton.textContent = '暂停音乐'; 
                 } else {
                     musicPlayer.pause();
-                    playPauseButton.innerHTML = '▶'; // 播放符号
+                    playPauseButton.textContent = '播放音乐'; 
                 }
             });
             musicPlayer.addEventListener('ended', function() {
-                // 如果设置了 loop，音乐会自动重播，但如果 loop 因为某些原因失效或者被移除，
-                // 这个事件可以让按钮恢复到播放状态
-                playPauseButton.innerHTML = '▶'; // 播放符号
+                // Loop is enabled on audio tag, so this might only be relevant if loop is removed
+                // or for other UI updates.
+                playPauseButton.textContent = '播放音乐';
             });
         }
     </script>
