@@ -8,8 +8,10 @@
         /* --- 全局与布局样式 (与 index.html 完全相同) --- */
         :root {
             --sidebar-width: 260px;
+            --wrapper-max-width: 1200px;
             --main-bg-color: #ffffff;
             --sidebar-bg-color: #f8f9fa;
+            --site-bg-color: #e6f2f0; /* 温和的浅青色背景 */
             --border-color: #e9ecef;
             --text-color: #343a40;
             --link-color: #007bff;
@@ -24,136 +26,84 @@
             color: var(--text-color);
             margin: 0;
             padding: 0;
-            display: flex;
+            background-color: var(--site-bg-color);
         }
-        
-        /* --- 左侧导航栏 --- */
+
+        .site-wrapper {
+            max-width: var(--wrapper-max-width);
+            margin: 30px auto;
+            display: flex;
+            background-color: var(--main-bg-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
         .sidebar {
             width: var(--sidebar-width);
             flex-shrink: 0;
             background-color: var(--sidebar-bg-color);
-            height: 100vh;
-            position: sticky;
-            top: 0;
             border-right: 1px solid var(--border-color);
             padding: 25px 15px;
             box-sizing: border-box;
-            overflow-y: auto;
         }
+        .sidebar-header { font-size: 1.2em; font-weight: 600; padding: 0 10px 15px 10px; border-bottom: 1px solid var(--border-color); margin-bottom: 15px; }
+        .sidebar-nav ul { list-style-type: none; padding: 0; margin: 0; }
+        .sidebar-nav a { display: block; padding: 10px 15px; color: var(--link-color); text-decoration: none; border-radius: 5px; margin-bottom: 5px; font-weight: 500; transition: background-color 0.2s ease, color 0.2s ease; }
+        .sidebar-nav a:hover { background-color: var(--border-color); color: var(--link-hover-color); }
+        .sidebar-nav a.active { background-color: var(--active-link-bg); color: var(--active-link-text); font-weight: 600; }
 
-        .sidebar-header {
-            font-size: 1.2em;
-            font-weight: 600;
-            padding: 0 10px 15px 10px;
-            border-bottom: 1px solid var(--border-color);
-            margin-bottom: 15px;
-        }
-
-        .sidebar-nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .sidebar-nav a {
-            display: block;
-            padding: 10px 15px;
-            color: var(--link-color);
-            text-decoration: none;
-            border-radius: 5px;
-            margin-bottom: 5px;
-            font-weight: 500;
-            transition: background-color 0.2s ease, color 0.2s ease;
-        }
-
-        .sidebar-nav a:hover {
-            background-color: var(--border-color);
-            color: var(--link-hover-color);
-        }
-
-        .sidebar-nav a.active {
-            background-color: var(--active-link-bg);
-            color: var(--active-link-text);
-            font-weight: 600;
-        }
-        
-        /* --- 右侧主内容区 --- */
-        .main-content {
-            flex-grow: 1;
-            padding: 30px 50px;
-            background-color: var(--main-bg-color);
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
+        .main-content { flex-grow: 1; padding: 30px 50px; overflow-y: auto; }
         h1, h2 { color: #2c3e50; }
         h1 { font-size: 2.5em; text-align: left; margin-top: 0; }
         h2 { font-size: 1.8em; color: #2c3e50; border-bottom: 1px solid #eee; padding-bottom: 0.3em; margin-top: 2em; }
         
-        /* 讲义列表的特殊样式 */
         .lecture-list { list-style-type: none; padding-left: 0; }
-        .lecture-list li {
-            background-color: #fdfdfd;
-            border: 1px solid #eee;
-            padding: 15px 20px;
-            margin-bottom: 12px;
-            border-radius: 5px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .lecture-list li:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-        .lecture-list a {
-            text-decoration: none;
-            color: var(--link-color);
-            font-weight: 500;
-            font-size: 1.1em;
-        }
+        .lecture-list li { background-color: #fdfdfd; border: 1px solid #eee; padding: 15px 20px; margin-bottom: 12px; border-radius: 5px; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .lecture-list li:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .lecture-list a { text-decoration: none; color: var(--link-color); font-weight: 500; font-size: 1.1em; }
         .lecture-list a:hover { text-decoration: underline; }
 
-        /* --- 响应式设计 --- */
-        @media (max-width: 992px) {
-            body { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--border-color); }
+        @media (max-width: 1200px) {
+            .site-wrapper { margin: 0; border-radius: 0; }
+        }
+        @media (max-width: 768px) {
+            .site-wrapper { flex-direction: column; }
+            .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border-color); }
             .main-content { padding: 25px; }
         }
     </style>
 </head>
 <body>
+    <div class="site-wrapper">
+        <!-- 左侧导航栏 -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                RuixiangYe's Site
+            </div>
+            <div class="sidebar-nav">
+                <ul>
+                    <li><a href="./index.html">个人主页 (Homepage)</a></li>
+                    <li><a href="./lectures.html" class="active">课程与讲义 (Lectures)</a></li>
+                </ul>
+            </div>
+        </nav>
 
-    <!-- 左侧导航栏 -->
-    <nav class="sidebar">
-        <div class="sidebar-header">
-            RuixiangYe's Site
-        </div>
-        <div class="sidebar-nav">
-            <ul>
-                <li><a href="./index.html">个人主页 (Homepage)</a></li>
-                <li><a href="./lectures.html" class="active">课程与讲义 (Lectures)</a></li>
+        <!-- 右侧主内容区 -->
+        <main class="main-content">
+            <h1>我的课程与讲义</h1>
+            <h2>第一学期</h2>
+            <ul class="lecture-list">
+                <li><a href="./pdfs/第一章：微积分入门.pdf" target="_blank">第一章：微积分入门.pdf</a></li>
+                <li><a href="./pdfs/第二章：线性代数基础.pdf" target="_blank">第二章：线性代数基础.pdf</a></li>
+                <li><a href="./pdfs/第三章：概率论与数理统计.pdf" target="_blank">第三章：概率论与数理统计.pdf</a></li>
             </ul>
-        </div>
-    </nav>
-
-    <!-- 右侧主内容区 -->
-    <main class="main-content">
-        <h1>我的课程与讲义</h1>
-
-        <h2>第一学期</h2>
-        <ul class="lecture-list">
-            <!-- 请将下面的文件名和路径替换成你自己的 -->
-            <li><a href="./pdfs/第一章：微积分入门.pdf" target="_blank">第一章：微积分入门.pdf</a></li>
-            <li><a href="./pdfs/第二章：线性代数基础.pdf" target="_blank">第二章：线性代数基础.pdf</a></li>
-            <li><a href="./pdfs/第三章：概率论与数理统计.pdf" target="_blank">第三章：概率论与数理统计.pdf</a></li>
-        </ul>
-
-        <h2>第二学期</h2>
-        <ul class="lecture-list">
-            <!-- 请将下面的文件名和路径替换成你自己的 -->
-            <li><a href="./pdfs/第四章：机器学习概论.pdf" target="_blank">第四章：机器学习概论.pdf</a></li>
-            <li><a href="./pdfs/第五章：深度学习简介.pdf" target="_blank">第五章：深度学习简介.pdf</a></li>
-        </ul>
-    </main>
-
+            <h2>第二学期</h2>
+            <ul class="lecture-list">
+                <li><a href="./pdfs/第四章：机器学习概论.pdf" target="_blank">第四章：机器学习概论.pdf</a></li>
+                <li><a href="./pdfs/第五章：深度学习简介.pdf" target="_blank">第五章：深度学习简介.pdf</a></li>
+            </ul>
+        </main>
+    </div>
 </body>
 </html>
