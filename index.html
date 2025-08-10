@@ -41,30 +41,27 @@
             padding-bottom: 0.3em;
             margin-top: 1.5em;
             margin-bottom: 0.8em;
-            text-align: center; /* 新增：使 h2 文本居中 */
+            text-align: center; /* 使 h2 文本居中 */
         }
 
-        /* 修改：.heading-with-aside 不再使用 Flexbox 来并排显示 */
         .heading-with-aside {
             margin-top: 1.5em;
-            margin-bottom: 0.8em; /* 保持原有的整体上下间距 */
+            margin-bottom: 0.8em;
         }
 
         .heading-with-aside h3 {
             font-size: 1.5em;
             color: #2c3e50;
-            margin: 0 0 0.5em 0; /* h3 下方留出一些间距给提示文字 */
+            margin: 0 0 0.5em 0;
         }
 
         .music-prompt {
-            font-size: 0.85em;   /* 保持原有字体大小 */
+            font-size: 0.85em;
             color: #555;
-            /* margin-left: 20px; /* 移除，因为不再并排 */
-            white-space: normal; /* 允许文字自然换行 */
+            white-space: normal;
             font-style: italic;
             display: flex; 
             align-items: center;
-            /* margin-top: 0.5em; /* 可选，如果需要更多间距 */
         }
 
         p {
@@ -82,8 +79,6 @@
             margin-bottom: 15px;
             border-radius: 4px;
         }
-
-        /* .profile-picture 的样式已被删除 */
 
         a {
             color: #3498db;
@@ -137,6 +132,33 @@
             margin: 40px 0;
         }
 
+        /* --- 新增：导航按钮样式 --- */
+        .nav-container {
+            text-align: center;
+            margin: 25px 0 35px 0; /* 增加上下边距 */
+        }
+
+        .nav-link {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .nav-link:hover {
+            background-color: #2980b9;
+            text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        /* --- 导航按钮样式结束 --- */
+
         #playPauseButton {
             padding: 6px 12px;
             font-size: 1em;
@@ -163,31 +185,14 @@
                 box-shadow: none;
             }
 
-            h1 {
-                font-size: 2em;
-            }
-
-            h2 {
-                font-size: 1.6em;
-            }
-            
-            /* .heading-with-aside 的 flex 相关调整不再需要，因为默认就是堆叠 */
-            .heading-with-aside h3 {
-                font-size: 1.3em;
-                /* margin-bottom: 0.5em; /* 已在主样式中设定 */
-            }
-
-            .music-prompt {
-                /* white-space: normal; /* 已在主样式中设定 */
-                font-size: 0.8em;
-                /* margin-top: 5px; /* 可根据需要调整 */
-            }
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.6em; }
+            .heading-with-aside h3 { font-size: 1.3em; }
+            .music-prompt { font-size: 0.8em; }
             
             #playPauseButton {
                 font-size: 0.9em;
                 padding: 5px 10px;
-                /* margin-left: 0; /* 已在主样式中移除，这里不需要 */
-                /* margin-top: 8px; /* 如果需要额外间距 */
             }
 
             .rapidfire-table td {
@@ -199,21 +204,11 @@
         }
 
         @media (max-width: 480px) {
-            body {
-                line-height: 1.6;
-            }
-            .container {
-                padding: 10px 15px;
-            }
-            h1 {
-                font-size: 1.8em;
-            }
-            h2 {
-                font-size: 1.4em;
-            }
-            .heading-with-aside h3 {
-                font-size: 1.2em;
-            }
+            body { line-height: 1.6; }
+            .container { padding: 10px 15px; }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.4em; }
+            .heading-with-aside h3 { font-size: 1.2em; }
         }
 
     </style>
@@ -225,7 +220,10 @@
         <h1>Hey 👋, I'm RuixiangYe!</h1>
         <h2><strong>Welcome to my personal website!🤗</strong></h2>
 
-        <!-- 个人图片的代码块已在此处被删除 -->
+        <!-- 新增的导航链接按钮 -->
+        <div class="nav-container">
+            <a href="./lectures.html" class="nav-link">➡️ 前往我的课程与讲义</a>
+        </div>
 
         <div class="heading-with-aside">
             <h3>Here is my self introduction</h3>
@@ -306,7 +304,5 @@
             });
         }
     </script>
-</body>
-</html>
 </body>
 </html>
