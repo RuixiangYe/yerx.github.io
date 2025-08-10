@@ -8,8 +8,10 @@
         /* --- 全局与布局样式 --- */
         :root {
             --sidebar-width: 260px;
+            --wrapper-max-width: 1200px;
             --main-bg-color: #ffffff;
             --sidebar-bg-color: #f8f9fa;
+            --site-bg-color: #e6f2f0; /* 温和的浅青色背景 */
             --border-color: #e9ecef;
             --text-color: #343a40;
             --link-color: #007bff;
@@ -24,7 +26,18 @@
             color: var(--text-color);
             margin: 0;
             padding: 0;
+            background-color: var(--site-bg-color); /* 设置整个页面的背景色 */
+        }
+
+        /* 新增：网站内容总包裹器 */
+        .site-wrapper {
+            max-width: var(--wrapper-max-width);
+            margin: 30px auto; /* 上下边距30px，左右自动居中 */
             display: flex;
+            background-color: var(--main-bg-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden; /* 确保子元素的圆角生效 */
         }
 
         /* --- 左侧导航栏 --- */
@@ -32,13 +45,9 @@
             width: var(--sidebar-width);
             flex-shrink: 0;
             background-color: var(--sidebar-bg-color);
-            height: 100vh;
-            position: sticky;
-            top: 0;
             border-right: 1px solid var(--border-color);
             padding: 25px 15px;
             box-sizing: border-box;
-            overflow-y: auto;
         }
         
         .sidebar-header {
@@ -62,12 +71,10 @@
         .main-content {
             flex-grow: 1;
             padding: 30px 50px;
-            background-color: var(--main-bg-color);
-            max-width: 900px;
-            margin: 0 auto;
+            overflow-y: auto; /* 如果内容超长，允许自身滚动 */
         }
 
-        /* --- 从原始文件合并过来的内容样式 --- */
+        /* --- 从原始文件合并过来的内容样式 (保持不变) --- */
         h1, h2, h3 { color: #2c3e50; }
         h1 { font-size: 2.5em; text-align: center; margin-top: 1.5em; margin-bottom: 0.8em; }
         h2 { font-size: 2em; border-bottom: 1px solid #eee; padding-bottom: 0.3em; margin-top: 1.5em; margin-bottom: 0.8em; text-align: center; }
@@ -98,112 +105,102 @@
         hr { border: 0; height: 1px; background: #ddd; margin: 40px 0; }
 
         /* --- 响应式设计 --- */
-        @media (max-width: 992px) {
-            body { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--border-color); }
-            .main-content { padding: 25px; }
+        @media (max-width: 1200px) {
+            .site-wrapper {
+                margin: 0;
+                border-radius: 0;
+            }
+        }
+        @media (max-width: 768px) {
+            .site-wrapper {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+            .main-content {
+                padding: 25px;
+            }
             .rapidfire-table td { display: block; width: 100%; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 左侧导航栏 -->
-    <nav class="sidebar">
-        <div class="sidebar-header">
-            RuixiangYe's Site
-        </div>
-        <div class="sidebar-nav">
-            <ul>
-                <li><a href="./index.html" class="active">个人主页 (Homepage)</a></li>
-                <li><a href="./lectures.html">课程与讲义 (Lectures)</a></li>
-            </ul>
-        </div>
-    </nav>
+    <div class="site-wrapper">
+        <!-- 左侧导航栏 -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                RuixiangYe's Site
+            </div>
+            <div class="sidebar-nav">
+                <ul>
+                    <li><a href="./index.html" class="active">个人主页 (Homepage)</a></li>
+                    <li><a href="./lectures.html">课程与讲义 (Lectures)</a></li>
+                </ul>
+            </div>
+        </nav>
 
-    <!-- 右侧主内容区 (包含你所有的原始内容) -->
-    <main class="main-content">
-        <h1>Hey 👋, I'm RuixiangYe!</h1>
-        <h2><strong>Welcome to my personal website!🤗</strong></h2>
+        <!-- 右侧主内容区 (包含你所有的原始内容) -->
+        <main class="main-content">
+            <h1>Hey 👋, I'm RuixiangYe!</h1>
+            <h2><strong>Welcome to my personal website!🤗</strong></h2>
 
-        <div class="heading-with-aside">
-            <h3>Here is my self introduction</h3>
-            <p class="music-prompt">Perhaps you'd like to enjoy some music while you read?
-                <button id="playPauseButton" aria-label="Play/Pause Music">&#9658;</button>
-            </p>
-        </div>
-        
-        <audio id="backgroundMusic" loop>
-            <source src="https://raw.githubusercontent.com/RuixiangYe/yerx.github.io/refs/heads/main/dylanf%20-%20%E5%8D%A1%E5%86%9C%EF%BC%88%E7%BB%8F%E5%85%B8%E9%92%A2%E7%90%B4%E7%89%88%EF%BC%89.mp3" type="audio/mpeg">
-            您的浏览器不支持 HTML5 音频播放。
-        </audio>
+            <div class="heading-with-aside">
+                <h3>Here is my self introduction</h3>
+                <p class="music-prompt">Perhaps you'd like to enjoy some music while you read?
+                    <button id="playPauseButton" aria-label="Play/Pause Music">&#9658;</button>
+                </p>
+            </div>
+            
+            <audio id="backgroundMusic" loop>
+                <source src="https://raw.githubusercontent.com/RuixiangYe/yerx.github.io/refs/heads/main/dylanf%20-%20%E5%8D%A1%E5%86%9C%EF%BC%88%E7%BB%8F%E5%85%B8%E9%92%A2%E7%90%B4%E7%89%88%EF%BC%89.mp3" type="audio/mpeg">
+                您的浏览器不支持 HTML5 音频播放。
+            </audio>
 
-        <p>I received my B.Sc. in Chemistry and Theoretical Physics from Zhejiang Normal University in 2025. I am currently preparing to begin my career as a high school chemistry teacher. My academic interests lie primarily in theoretical chemistry and theoretical physics, with a particular focus on areas where physics intersects with differential geometry and algebraic topology. Outside of teaching and research, I have a strong appreciation for classical music, coffee, and table tennis. While education is my main profession, I remain actively engaged in independent research in my spare time. ☺️☺️☺️</p>
-
-        <div>
-            <img src="https://raw.githubusercontent.com/RuixiangYe/yerx.github.io/main/%E5%9B%BE%E7%89%87.jpg" alt="Another Picture" style="max-width: 150px;">
-        </div>
-
-        <p>During my undergraduate studies, in addition to the core curriculum in chemistry, I completed the four fundamental mechanics courses from the undergraduate physics program and took graduate-level courses in Quantum Field Theory (too difficult to learn!), General Relativity, and Many-Body Physics. From the mathematics department, I studied Group Theory (the most beautiful!), Differential Geometry, and Algebraic Topology.In addition, I successfully participated in the Yau Mathematical Competition organized by Shing-Tung Yau in the Mathematical Physics track (at the level of Ph.D. program entrance exams), and I also won the First Prize in the National College Mathematics Competition and the First Prize in the Zhejiang Province Advanced Mathematics Competition I am also skilled in programming, with practical experience in numerical computation using Python and Mathematica. 😉😉😉</p>
-
-        <div>
-            <img src="https://github.com/RuixiangYe/yerx.github.io/blob/main/%E5%AE%87%E5%AE%99.jpeg?raw=true" alt="Universe" style="max-width: 200px;">
-        </div>
-
-        <p>My previous research involved topics such as quantum geometry in strongly correlated systems—including the anisotropic quantum Hall effect—as well as topological phases and fractionalization. In theoretical chemistry, I worked on applications of density functional theory (DFT), a related publication can be found here: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0021979723008329" target="_blank" rel="noopener noreferrer">j.jcis.2023.05.041</a>.
-        I have since shifted my focus away from these research areas. 😇😇😇</p>
-
-        <div>
-            <img src="https://raw.githubusercontent.com/RuixiangYe/yerx.github.io/main/%E9%9C%8D%E5%B0%94.gif" alt="Hall Effect GIF" style="max-width: 200px;">
-        </div>
-
-        <p>In addition, I actively share science communication content and study notes on Zhihu, a leading knowledge-sharing platform in China, where my <a href="https://www.zhihu.com/people/he-xi-7-18-54" target="_blank" rel="noopener noreferrer">posts</a> have accumulated over 400,000 views. 🤪🤪🤪</p>
-        
-        <h2>Contact</h2>
-        <div class="contact-info">
-            <p><strong>Email:</strong> yrx0822@foxmail.com</p>
-            <p><strong>WeChat:</strong> yrxxx0000000</p>
-            <p><strong>Mobile:</strong> +86 13567604122 <br>
-            <em>(Please use only for urgent matters.)</em></p>
-        </div>
-
-        <h2>Rapidfire</h2>
-        <table class="rapidfire-table">
-            <tr>
-                <td>
-                    <ul>
-                        <li>🔭 I’m currently working at Longquan High School (龙泉中学) as a chemistry teacher.</li>
-                        <li>🌱 I'm currently studying Chemistry and Theoretical Physics, and I also pursue research in my spare time.</li>
-                        <li>❓ Feel free to ask me about anything related to Science.</li>
-                        <li>🤝 If you are interested in in-depth learning and research in science, don't hesitate to reach out.</li>
-                    </ul>
-                </td>
-                <td>
+            <p>I received my B.Sc. in Chemistry and Theoretical Physics from Zhejiang Normal University in 2025. I am currently preparing to begin my career as a high school chemistry teacher. My academic interests lie primarily in theoretical chemistry and theoretical physics, with a particular focus on areas where physics intersects with differential geometry and algebraic topology. Outside of teaching and research, I have a strong appreciation for classical music, coffee, and table tennis. While education is my main profession, I remain actively engaged in independent research in my spare time. ☺️☺️☺️</p>
+            <div><img src="https://raw.githubusercontent.com/RuixiangYe/yerx.github.io/main/%E5%9B%BE%E7%89%87.jpg" alt="Another Picture" style="max-width: 150px;"></div>
+            <p>During my undergraduate studies, in addition to the core curriculum in chemistry, I completed the four fundamental mechanics courses from the undergraduate physics program and took graduate-level courses in Quantum Field Theory (too difficult to learn!), General Relativity, and Many-Body Physics. From the mathematics department, I studied Group Theory (the most beautiful!), Differential Geometry, and Algebraic Topology.In addition, I successfully participated in the Yau Mathematical Competition organized by Shing-Tung Yau in the Mathematical Physics track (at the level of Ph.D. program entrance exams), and I also won the First Prize in the National College Mathematics Competition and the First Prize in the Zhejiang Province Advanced Mathematics Competition I am also skilled in programming, with practical experience in numerical computation using Python and Mathematica. 😉😉😉</p>
+            <div><img src="https://github.com/RuixiangYe/yerx.github.io/blob/main/%E5%AE%87%E5%AE%99.jpeg?raw=true" alt="Universe" style="max-width: 200px;"></div>
+            <p>My previous research involved topics such as quantum geometry in strongly correlated systems—including the anisotropic quantum Hall effect—as well as topological phases and fractionalization. In theoretical chemistry, I worked on applications of density functional theory (DFT), a related publication can be found here: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0021979723008329" target="_blank" rel="noopener noreferrer">j.jcis.2023.05.041</a>. I have since shifted my focus away from these research areas. 😇😇😇</p>
+            <div><img src="https://raw.githubusercontent.com/RuixiangYe/yerx.github.io/main/%E9%9C%8D%E5%B0%94.gif" alt="Hall Effect GIF" style="max-width: 200px;"></div>
+            <p>In addition, I actively share science communication content and study notes on Zhihu, a leading knowledge-sharing platform in China, where my <a href="https://www.zhihu.com/people/he-xi-7-18-54" target="_blank" rel="noopener noreferrer">posts</a> have accumulated over 400,000 views. 🤪🤪🤪</p>
+            <h2>Contact</h2>
+            <div class="contact-info">
+                <p><strong>Email:</strong> yrx0822@foxmail.com</p>
+                <p><strong>WeChat:</strong> yrxxx0000000</p>
+                <p><strong>Mobile:</strong> +86 13567604122 <br><em>(Please use only for urgent matters.)</em></p>
+            </div>
+            <h2>Rapidfire</h2>
+            <table class="rapidfire-table">
+                <tr>
+                    <td>
+                        <ul>
+                            <li>🔭 I’m currently working at Longquan High School (龙泉中学) as a chemistry teacher.</li>
+                            <li>🌱 I'm currently studying Chemistry and Theoretical Physics, and I also pursue research in my spare time.</li>
+                            <li>❓ Feel free to ask me about anything related to Science.</li>
+                            <li>🤝 If you are interested in in-depth learning and research in science, don't hesitate to reach out.</li>
+                        </ul>
                     </td>
-            </tr>
-        </table>
-
-        <hr>
-    </main>
+                    <td></td>
+                </tr>
+            </table>
+            <hr>
+        </main>
+    </div>
 
     <script>
-        // JavaScript for play/pause button
+        // JavaScript for play/pause button (保持不变)
         const musicPlayer = document.getElementById('backgroundMusic');
         const playPauseButton = document.getElementById('playPauseButton');
-
         if (playPauseButton && musicPlayer) {
             playPauseButton.addEventListener('click', function() {
-                if (musicPlayer.paused || musicPlayer.ended) {
-                    musicPlayer.play();
-                    playPauseButton.innerHTML = '❚❚'; // 暂停符号
-                } else {
-                    musicPlayer.pause();
-                    playPauseButton.innerHTML = '▶'; // 播放符号
-                }
+                if (musicPlayer.paused || musicPlayer.ended) { musicPlayer.play(); playPauseButton.innerHTML = '❚❚'; } 
+                else { musicPlayer.pause(); playPauseButton.innerHTML = '▶'; }
             });
-            musicPlayer.addEventListener('ended', function() {
-                playPauseButton.innerHTML = '▶';
-            });
+            musicPlayer.addEventListener('ended', function() { playPauseButton.innerHTML = '▶'; });
         }
     </script>
 </body>
